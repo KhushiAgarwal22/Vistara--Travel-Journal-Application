@@ -32,7 +32,7 @@ const Create = () => {
                 data.append("upload_preset", "upload") 
                 const uploadRes = await axios.post( 
                     "https://api.cloudinary.com/v1_1/<your_cloudinary_key>/image/upload", 
-                    data, { withcredentials: false } 
+                    data,{ headers:{ withcredentials: false } }
                 ) 
                 const { url } = uploadRes.data; 
                 return url; 
@@ -53,9 +53,9 @@ const Create = () => {
   
         try { 
             const response = await axios.post('http://localhost:5500/api/entries/', 
-                newEntry, { 
+                newEntry, {headers:{ 
                 withCredentials: false
-            }) 
+            }}) 
   
             navigate(`/view/${response?.data?._id}`); 
         } 

@@ -39,9 +39,10 @@ function Register() {
   
   
             try { 
+                console.log('ji')
                 const uploadRes = await axios.post( 
                     "https://api.cloudinary.com/v1_1/<your_cloudinary_key>/image/upload", 
-                    data, { withcredentials: false } 
+                    data, {headers:{ withcredentials: false } }
                 ); 
   
                 const { url } = uploadRes.data; 
